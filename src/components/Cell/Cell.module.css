@@ -1,0 +1,25 @@
+.cell {
+    border-left: 1px solid rgba(84, 83, 83, 0.1);
+    border-top: 1px solid rgba(84, 83, 83, 0.1);
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: background-color 500ms;
+}
+
+.cell_wall {
+    background-color: #160F17;
+}
+
+.cell_visited {
+    background-color: #F0BCE5;
+}
+
+.cell_path {
+    background-color: #7FF1D6;
+}
+
+.cell_queued {
+    background-color: #F191DC;
+}

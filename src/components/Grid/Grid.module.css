@@ -1,0 +1,113 @@
+.container {
+    display: flex;
+}
+
+.nav {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 290px;
+    padding: 0 50px;
+}
+
+.navList {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.weightForm {
+    display: flex;
+    gap: 10px;
+}
+
+.inputWeight {
+    width: 100px;
+    height: 40px;
+    font-family: Roboto, sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    color: #160F17;
+    border: 1px solid #160F17;
+    border-radius: 5px;
+    text-align: center;
+}
+
+.inputWeight::-webkit-outer-spin-button,
+.inputWeight::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.inputWeight[type=number] {
+    -moz-appearance: textfield;
+}
+
+.chooseAlgorithm,
+.chooseAlgorithm option {
+    background-color: transparent;
+    border: none;
+    font-family: Roboto, sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    padding: 10px 5px;
+    color: #160F17;
+}
+
+.button {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    font-family: Roboto, sans-serif;
+    font-size: 16px;
+    font-style: normal;
+    text-transform: uppercase;
+    font-weight: 500;
+    line-height: 19px;
+}
+
+.activeButton {
+    color: #F191DC;
+}
+
+.navDiv {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    width: 180px;
+    text-align: center;
+}
+
+.navDivButton {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    font-family: Roboto, sans-serif;
+    font-size: 16px;
+    font-style: normal;
+    text-transform: uppercase;
+    font-weight: 500;
+    line-height: 19px;
+}
+
+.visual_button {
+    color: #fff;
+    padding: 20px 0;
+    text-align: center;
+    background: #160F17;
+    border-radius: 20px;
+}
+
+.grid {
+    display: inline-grid;
+    border-bottom: 1px solid rgba(84, 83, 83, 0.1);
+    border-right: 1px solid rgba(84, 83, 83, 0.1);
+}
