@@ -1,15 +1,14 @@
 import {steps, isInRange} from "./utils";
 
-const generateMaze = (sizeX, sizeY) => {
+const generateMaze = (sizeX, sizeY, onCellClick) => {
   const arr = [];
   for (let i = 0; i < sizeY; i++) {
     arr.push([]);
     for (let j = 0; j < sizeX; j++) {
-      arr[i].push(Math.floor(Math.random() * 2));
+      arr[i].push(Math.random() > 0.3 ? 0 : 1);
+      if (onCellClick && !arr[i][j] && Math.random() > 0.8) onCellClick(i, j, "weight");
     }
   }
-  console.log(sizeX, sizeY)
-  console.log(arr.length, arr[0].length);
   const start = {x: Math.floor(Math.random() * sizeX / 2), y: Math.floor(Math.random() * sizeY / 2)};
   const end = {x: Math.floor((Math.random() + 1) * sizeX / 2), y: Math.floor((Math.random() + 1) * sizeY / 2)};
 

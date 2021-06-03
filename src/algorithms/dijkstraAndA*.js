@@ -1,11 +1,11 @@
-import {isInRange, steps, sleep, heuristic} from "./utils";
+import {isInRange, steps, sleep, getDistance} from "./utils";
 import PriorityQueue from "js-priority-queue";
 
 const comparatorDijkstra = (grid) => (p1, p2) => grid[p1.y][p1.x].cost - grid[p2.y][p2.x].cost
 const comparatorAStart = (grid, end) => (p1, p2) => grid[p1.y][p1.x].cost - grid[p2.y][p2.x].cost +
-                                        heuristic(p1, end) - heuristic(p2, end);
+                                        getDistance(p1, end) - getDistance(p2, end);
 
-const DijkstraAndA = async (initialGrid, start, end, weights, weightCost, changeCellVisited, name) => {
+const DijkstraAndA = async (initialGrid, start, end, weights, weightCost, changeCellVisited, name, speed) => {
     const grid = initialGrid.map(el => el.map(val => ({val, cost: Infinity})));
     grid[start.y][start.x].cost = 0;
     const xMax = grid[0].length - 1;
@@ -13,7 +13,7 @@ const DijkstraAndA = async (initialGrid, start, end, weights, weightCost, change
     const comparator = name === "dijkstra" ? comparatorDijkstra(grid) : comparatorAStart(grid, end);
     const frontier = new PriorityQueue({comparator});
     frontier.queue({...start, prev: null})
-    const delay = 10;
+    const delay = Math.floor(100 / speed);
 
     while (frontier.length) {
         const current = frontier.dequeue()
@@ -38,13 +38,14 @@ const DijkstraAndA = async (initialGrid, start, end, weights, weightCost, change
                             await sleep(delay);
                             changeCellVisited(node.y, node.x, "path");
                         }
-                        return;
+                        return path.length;
                     }
                     frontier.queue(newPoint);
                 }
             }
         }
     }
+    return false;
 };
 
 export default DijkstraAndA;

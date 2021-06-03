@@ -1,5 +1,6 @@
 .container {
     display: flex;
+    align-content: flex-start;
 }
 
 .nav {
@@ -7,6 +8,7 @@
     flex-direction: column;
     justify-content: space-between;
     width: 290px;
+    height: 800px;
     padding: 0 50px;
 }
 
@@ -108,6 +110,14 @@
 
 .grid {
     display: inline-grid;
+    align-self: flex-start;
     border-bottom: 1px solid rgba(84, 83, 83, 0.1);
     border-right: 1px solid rgba(84, 83, 83, 0.1);
+}
+
+.df {
+    display: flex;
+    align-items: center;
+    max-width: 210px;
+    justify-content: space-between;
 }

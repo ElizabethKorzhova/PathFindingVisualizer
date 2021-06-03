@@ -1,10 +1,10 @@
 import {isInRange, steps, sleep} from "./utils";
 
-const BFS = async (initialGrid, start, end, changeCellVisited) => {
+const BFS = async (initialGrid, start, end, changeCellVisited, speed) => {
     const grid = initialGrid.map(el => el.map(val => ({val})));
     const xMax = grid[0].length - 1;
     const yMax = grid.length - 1;
-    const delay = 20;
+    const delay = Math.floor(100 / speed);
     let queue = [{...start, prev: null, visited: true}];
     await sleep(delay);
     changeCellVisited(start.y, start.x, "visited");
@@ -28,12 +28,12 @@ const BFS = async (initialGrid, start, end, changeCellVisited) => {
                         await sleep(delay);
                         changeCellVisited(node.y, node.x, "path");
                     }
-                    return;
+                    return path.length;
                 }
-
             }
         }
     }
+    return false;
 };
 
 export default BFS;

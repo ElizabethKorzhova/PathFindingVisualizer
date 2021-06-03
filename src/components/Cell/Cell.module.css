@@ -1,6 +1,7 @@
 .cell {
     border-left: 1px solid rgba(84, 83, 83, 0.1);
     border-top: 1px solid rgba(84, 83, 83, 0.1);
+    background-color: #fff;
     height: 30px;
     display: flex;
     justify-content: center;

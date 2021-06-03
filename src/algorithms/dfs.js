@@ -1,10 +1,10 @@
 import {isInRange, steps} from "./utils";
 
-export default (initialGrid, start, end, changeCellVisited) => {
+export default (initialGrid, start, end, changeCellVisited, speed) => {
     const grid = initialGrid.map(el => el.map(val => ({val})));
     const xMax = grid[0].length - 1;
     const yMax = grid.length - 1;
-    const delay = 20;
+    const delay = Math.floor(100 / speed);
     let counter = 0;
     let queue = [{...start, prev: null, visited: true}];
     setTimeout(() => changeCellVisited(start.y, start.x, "visited"), counter * delay);
@@ -35,10 +35,10 @@ export default (initialGrid, start, end, changeCellVisited) => {
                         counter++;
                         setTimeout(() => changeCellVisited(node.y, node.x, "path"), counter * delay);
                     }
-                    return;
+                    return path.length;
                 }
-
             }
         }
     }
+    return false;
 }

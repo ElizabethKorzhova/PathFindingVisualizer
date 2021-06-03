@@ -1,17 +1,22 @@
 import React from "react";
 import styles from "./Cell.module.css";
 
-const Cell = ({state, type, rowIndex, columnIndex, onClick}) => {
+const Cell = ({state, type, rowIndex, columnIndex, onClick, mouseClicked}) => {
     return (
-        <div className={`${styles.cell} 
+        <div data-testid="cell" className={`${styles.cell} 
         ${state === 1 && styles.cell_wall} 
         ${state === 3 && styles.cell_queued}
         ${state === 4 && styles.cell_visited}
         ${state === 5 && styles.cell_path}`}
+             onMouseEnter={() => {
+                 if (mouseClicked) {
+                     onClick(rowIndex, columnIndex);
+                 }
+             }}
              onClick={() => onClick(rowIndex, columnIndex)}>
             {type === "start" &&
             <svg width="25" height="25" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <g clip-path="url(#clip0)">
+                <g clipPath="url(#clip0)">
                     <path
                         d="M15.6125 6.75C15.0949 6.75 14.5985 6.55246 14.2325 6.20083C13.8666 5.84919 13.6609 5.37228 13.6609 4.875V1.875C13.6609 1.37772 13.8666 0.900806 14.2325 0.549175C14.5985 0.197544 15.0949 0 15.6125 0C16.1301 0 16.6265 0.197544 16.9925 0.549175C17.3585 0.900806 17.5641 1.37772 17.5641 1.875V4.875C17.5641 5.37228 17.3585 5.84919 16.9925 6.20083C16.6265 6.55246 16.1301 6.75 15.6125 6.75Z"
                         fill="#160F17"/>
@@ -41,7 +46,7 @@ const Cell = ({state, type, rowIndex, columnIndex, onClick}) => {
             }
             {type === "end" &&
             <svg width="25" height="25" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <g clip-path="url(#clip0)">
+                <g clipPath="url(#clip0)">
                     <path
                         d="M10.9288 15C10.9288 16.1935 11.4222 17.3381 12.3006 18.182C13.179 19.0259 14.3703 19.5 15.6125 19.5C16.8547 19.5 18.0461 19.0259 18.9244 18.182C19.8028 17.3381 20.2963 16.1935 20.2963 15C20.2963 13.8065 19.8028 12.6619 18.9244 11.818C18.0461 10.9741 16.8547 10.5 15.6125 10.5C14.3703 10.5 13.179 10.9741 12.3006 11.818C11.4222 12.6619 10.9288 13.8065 10.9288 15Z"
                         fill="#160F17"/>

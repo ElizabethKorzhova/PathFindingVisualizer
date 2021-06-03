@@ -1,14 +1,14 @@
-import {isInRange, steps, sleep, heuristic} from "./utils";
+import {isInRange, steps, sleep, getDistance} from "./utils";
 import PriorityQueue from "js-priority-queue";
 
-const comparator = (end) => (a, b) => heuristic(a, end) - heuristic(b, end);
+const comparator = (end) => (a, b) => getDistance(a, end) - getDistance(b, end);
 
-const GBFS = async (initialGrid, start, end, changeCellVisited) => {
+const GBFS = async (initialGrid, start, end, changeCellVisited, speed) => {
     const grid = initialGrid.map(el => el.map(val => ({val, visited: false})));
     const frontier = new PriorityQueue({comparator: comparator(end)});
     const xMax = grid[0].length - 1;
     const yMax = grid.length - 1;
-    const delay = 20;
+    const delay = Math.floor(100 / speed);
     frontier.queue({...start, prev: null});
     grid[start.y][start.x].visited = true;
     changeCellVisited(start.y, start.x, "visited");
@@ -24,19 +24,20 @@ const GBFS = async (initialGrid, start, end, changeCellVisited) => {
                     cell.visited = true;
                     await sleep(delay);
                     changeCellVisited(newPoint.y, newPoint.x, "visited");
-                    if (!heuristic(newPoint, end)) {
+                    if (!getDistance(newPoint, end)) {
                         const path = [newPoint];
                         while (path[0].prev) path.unshift(path[0].prev);
                         for (let node of path) {
                             await sleep(delay);
                             changeCellVisited(node.y, node.x, "path");
                         }
-                        return;
+                        return path.length;
                     }
                 }
             }
         }
     }
+    return false;
 };
 
 export default GBFS;
