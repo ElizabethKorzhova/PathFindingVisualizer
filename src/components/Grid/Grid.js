@@ -10,8 +10,8 @@ import generateMaze from "../../algorithms/generateMaze";
 import throttle from 'lodash.throttle';
 
 const initialArr = [];
-const availableWidth = window.innerWidth - 460;
-const availableHeight = window.innerHeight - 210
+const availableWidth = window.innerWidth - 360;
+const availableHeight = window.innerHeight - 180
 const n = Math.ceil(availableHeight / 30);
 const m = Math.ceil(availableWidth / 30);
 for (let i = 0; i < n; i++) {
@@ -323,25 +323,17 @@ const Grid = () => {
                 <option value="gbfs">Greedy Best First Search</option>
               </select>
             </li>
-            <li>
-              <label className={styles.df}>
-                X:
+            <li className={styles.gap}>
                 <input value={xSize}
                        className={styles.inputWeight}
                        onInput={e =>
                          setXSize(Math.max(+e.target.value, 2))}
                        type="number" min="2"/>
-              </label>
-            </li>
-            <li>
-              <label className={styles.df}>
-                Y:
                 <input value={ySize}
                        className={styles.inputWeight}
                        onInput={e =>
                          setYSize(Math.max(+e.target.value, 2))}
                        type="number" min="2"/>
-              </label>
             </li>
             <li>
               <label className={styles.df}>
