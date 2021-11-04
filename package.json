@@ -2,7 +2,7 @@
   "name": "path-finder-visualizer",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://HotSweetie.github.io/PathFindingVisualizer",
+  "homepage": "https://ElizabethKorzhova.github.io/PathFindingVisualizer",
   "dependencies": {
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/user-event": "^12.1.10",
