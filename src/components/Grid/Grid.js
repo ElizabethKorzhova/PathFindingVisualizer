@@ -40,7 +40,7 @@ const Grid = () => {
   const [weights, setWeights] = useState([]);
   const [weightCost, setWeightCost] = useState(3);
   const [mouseClicked, setMouseClicked] = useState(false);
-  const [pathLengthMessage, setPathLengthMessage] = useState("Почніть візуалізацію");
+  const [pathLengthMessage, setPathLengthMessage] = useState("Start visualization");
   const [speed, setSpeed] = useState(5);
   const [gridStyles, setGridStyles] = useState({
     gridTemplateColumns: new Array(m).fill(1).map(() => "30px").join(" ")
@@ -144,8 +144,8 @@ const Grid = () => {
       default:
         break;
     }
-    if (pathLength) setPathLengthMessage(`Довжина: ${pathLength}`);
-    else setPathLengthMessage("Немає шляху");
+    if (pathLength) setPathLengthMessage(`Length: ${pathLength}`);
+    else setPathLengthMessage("There is no path");
     setVisualizeButtonDisabled(false);
   };
 
@@ -337,7 +337,7 @@ const Grid = () => {
             </li>
             <li>
               <label className={styles.df}>
-              speed
+              Speed
               <input value={speed}
                      onInput={e =>
                        setSpeed(Math.min(Math.max(+e.target.value, 1), 10))}
